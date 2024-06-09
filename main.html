@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mono Text Display</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: monospace;
+            font-size: 32px;
+            text-align: center;
+        }
+        #textDisplay {
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0);
+            width: 50%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            word-break: break-word;
+            border: none;
+            outline: none;
+            animation: fadeIn 1s ease-in-out;
+            caret-color: transparent;
+        }
+        #textDisplay:focus {
+            outline: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="textDisplay" contenteditable="true" spellcheck="false" data-placeholder="&#8203;"></div>
+
+    <script>
+        document.getElementById('textDisplay').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                this.innerText = '';
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
